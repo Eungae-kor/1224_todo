@@ -25,27 +25,7 @@ class AddButton extends StatelessWidget {
             ],
           ),
           child: IconButton(
-            onPressed: /*() {
-              showModalBottomSheet(
-                context: context,
-                isScrollControlled: true,
-                builder: (context) {
-                  return SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.6,
-                    child: Padding(
-                      padding: EdgeInsets.only(
-                        left: 20,
-                        right: 20,
-                        top: 12,
-                        bottom: MediaQuery.of(context).viewInsets.bottom,
-                      ),
-                      child: TodoEntity(),
-                    ),
-                  );
-                },
-              );
-            },*/
-                onPressed, // 추가함
+            onPressed: onPressed,
             icon: Icon(Icons.add, color: Colors.white),
           ),
         ),
