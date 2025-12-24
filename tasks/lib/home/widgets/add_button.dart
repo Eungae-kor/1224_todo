@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:todo_app/home/widgets/todo_entry.dart';
+import 'package:todo_app/home/widgets/todo_entity.dart';
 
 class AddButton extends StatelessWidget {
+  final VoidCallback onPressed;
+
+  const AddButton({required this.onPressed});
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -21,7 +25,7 @@ class AddButton extends StatelessWidget {
             ],
           ),
           child: IconButton(
-            onPressed: () {
+            onPressed: /*() {
               showModalBottomSheet(
                 context: context,
                 isScrollControlled: true,
@@ -35,12 +39,13 @@ class AddButton extends StatelessWidget {
                         top: 12,
                         bottom: MediaQuery.of(context).viewInsets.bottom,
                       ),
-                      child: TodoEntry(),
+                      child: TodoEntity(),
                     ),
                   );
                 },
               );
-            },
+            },*/
+                onPressed,
             icon: Icon(Icons.add, color: Colors.white),
           ),
         ),

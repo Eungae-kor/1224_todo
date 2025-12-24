@@ -1,16 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:todo_app/home/widgets/todo.dart';
 
-class Todo extends StatelessWidget {
-  final String title;
-  final String? description;
-  final bool isFavorite;
+class TodoView extends StatelessWidget {
+  final List<Todo> todos;
 
-  Todo({
-    required this.title,
-    required this.description,
-    required this.isFavorite,
-  });
+  const TodoView(this.todos);
 
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children:
+          todos.map((todo) {
+            return TodoItem(todo);
+          }).toList(),
+    );
+  }
+}
+
+class TodoItem extends StatelessWidget {
+  Todo todo;
+  TodoItem(this.todo);
   @override
   Widget build(BuildContext context) {
     return Text("Todo");

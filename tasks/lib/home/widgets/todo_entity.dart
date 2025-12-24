@@ -7,12 +7,12 @@ import 'package:flutter/material.dart';
 import 'package:todo_app/home/widgets/favorite_button.dart';
 import 'package:todo_app/home/widgets/todo_view.dart';
 
-class TodoEntry extends StatefulWidget {
+class TodoEntity extends StatefulWidget {
   @override
-  State<TodoEntry> createState() => _TodoEntryState();
+  State<TodoEntity> createState() => _TodoEntityState();
 }
 
-class _TodoEntryState extends State<TodoEntry> {
+class _TodoEntityState extends State<TodoEntity> {
   bool isFavorite = false;
   bool showDescription = false;
   final TextEditingController _titleController = TextEditingController();
