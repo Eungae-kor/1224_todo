@@ -1,18 +1,22 @@
-import 'package:flutter/material.dart';
-
-class Todo extends StatelessWidget {
+class Todo {
   final String title;
   final String? description;
   final bool isFavorite;
+  final bool isDone;
 
   Todo({
     required this.title,
-    required this.description,
+    this.description,
     required this.isFavorite,
+    this.isDone = false,
   });
 
-  @override
-  Widget build(BuildContext context) {
-    return Text("Todo");
+  Todo copyWith({bool? isDone}) {
+    return Todo(
+      title: title,
+      description: description,
+      isFavorite: isFavorite,
+      isDone: isDone ?? this.isDone,
+    );
   }
 }

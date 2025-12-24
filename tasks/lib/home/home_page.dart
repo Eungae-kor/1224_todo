@@ -14,6 +14,11 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final List<Todo> todos = [];
+  void toggleDone(int index) {
+    setState(() {
+      todos[index] = todos[index].copyWith(isDone: !todos[index].isDone);
+    });
+  }
 
   Future<void> _openTodoEntity() async {
     final Todo? newTodo = await showModalBottomSheet<Todo>(
@@ -65,6 +70,7 @@ class _HomePageState extends State<HomePage> {
                   todos.removeAt(index);
                 });
               },
+              onToggleDone: toggleDone,
             ),
           Spacer(),
           AddButton(onPressed: _openTodoEntity),
