@@ -55,7 +55,17 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: const Color.fromARGB(255, 211, 211, 211),
       body: Column(
         children: [
-          if (todos.isEmpty) NoTodo(title) else TodoView(todos),
+          if (todos.isEmpty)
+            NoTodo(title)
+          else
+            TodoView(
+              todos,
+              onDelete: (index) {
+                setState(() {
+                  todos.removeAt(index);
+                });
+              },
+            ),
           Spacer(),
           AddButton(onPressed: _openTodoEntity),
           SizedBox(height: 60),

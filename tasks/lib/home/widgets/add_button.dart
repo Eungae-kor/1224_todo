@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:todo_app/home/widgets/todo_entity.dart';
 
 class AddButton extends StatelessWidget {
   final VoidCallback onPressed;
