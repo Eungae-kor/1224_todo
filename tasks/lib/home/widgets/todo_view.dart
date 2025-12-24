@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:todo_app/home/widgets/todo.dart';
+import 'package:todo_app/home/widgets/favorite_button.dart';
 
 class TodoView extends StatelessWidget {
   final List<Todo> todos;
   final void Function(int index) onDelete;
   final void Function(int index) onToggleDone;
+  final void Function(int index, bool value) onChangeFavorite;
 
   const TodoView(
     this.todos, {
     required this.onDelete,
     required this.onToggleDone,
+    required this.onChangeFavorite,
   });
 
   @override
@@ -23,6 +26,7 @@ class TodoView extends StatelessWidget {
             index: index,
             onDelete: onDelete,
             onToggleDone: onToggleDone,
+            onChangeFavorite: onChangeFavorite,
           );
         },
       ),
@@ -35,12 +39,14 @@ class TodoItem extends StatelessWidget {
   final int index;
   final void Function(int index) onDelete;
   final void Function(int index) onToggleDone;
+  final void Function(int index, bool value) onChangeFavorite;
 
   const TodoItem({
     required this.todo,
     required this.index,
     required this.onDelete,
     required this.onToggleDone,
+    required this.onChangeFavorite,
   });
 
   @override
@@ -89,9 +95,9 @@ class TodoItem extends StatelessWidget {
                     ),
                   ),
                   Spacer(),
-                  Icon(
-                    todo.isFavorite ? Icons.star : Icons.star_border,
-                    color: todo.isFavorite ? Colors.amber : Colors.grey,
+                  FavoriteButton(
+                    isFavorite: todo.isFavorite,
+                    onChanged: (value) => onChangeFavorite(index, value),
                   ),
                   SizedBox(width: 12),
                 ],

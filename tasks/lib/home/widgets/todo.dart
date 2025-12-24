@@ -11,11 +11,11 @@ class Todo {
     this.isDone = false,
   });
 
-  Todo copyWith({bool? isDone}) {
+  Todo copyWith({bool? isDone, bool? isFavorite}) {
     return Todo(
       title: title,
       description: description,
-      isFavorite: isFavorite,
+      isFavorite: isFavorite ?? this.isFavorite,
       isDone: isDone ?? this.isDone,
     );
   }

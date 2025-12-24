@@ -20,6 +20,12 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
+  void changeFavorite(int index, bool value) {
+    setState(() {
+      todos[index] = todos[index].copyWith(isFavorite: value); // 1) HomePage
+    });
+  }
+
   Future<void> _openTodoEntity() async {
     final Todo? newTodo = await showModalBottomSheet<Todo>(
       context: context,
@@ -71,6 +77,7 @@ class _HomePageState extends State<HomePage> {
                 });
               },
               onToggleDone: toggleDone,
+              onChangeFavorite: changeFavorite,
             ),
           Spacer(),
           AddButton(onPressed: _openTodoEntity),
