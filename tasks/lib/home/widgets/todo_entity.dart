@@ -5,7 +5,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:todo_app/home/widgets/favorite_button.dart';
-import 'package:todo_app/home/widgets/todo_view.dart';
+import 'package:todo_app/home/widgets/todo.dart';
 
 class TodoEntity extends StatefulWidget {
   @override
@@ -15,19 +15,17 @@ class TodoEntity extends StatefulWidget {
 class _TodoEntityState extends State<TodoEntity> {
   bool isFavorite = false;
   bool showDescription = false;
-  final TextEditingController _titleController = TextEditingController();
-  final TextEditingController _detailController = TextEditingController();
+  final TextEditingController todoTitle = TextEditingController();
+  final TextEditingController todoDetail = TextEditingController();
   bool get canSave {
-    return _titleController.text.trim().isNotEmpty;
+    return todoTitle.text.trim().isNotEmpty;
   }
 
   void saveTodo() {
     final todo = Todo(
-      title: _titleController.text.trim(),
+      title: todoTitle.text.trim(),
       description:
-          _detailController.text.trim().isEmpty
-              ? null
-              : _detailController.text.trim(),
+          todoDetail.text.trim().isEmpty ? null : todoDetail.text.trim(),
       isFavorite: isFavorite,
     );
     Navigator.of(context).pop(todo);
@@ -35,8 +33,8 @@ class _TodoEntityState extends State<TodoEntity> {
 
   @override
   void dispose() {
-    _titleController.dispose();
-    _detailController.dispose();
+    todoTitle.dispose();
+    todoDetail.dispose();
     super.dispose();
   }
 
@@ -45,7 +43,7 @@ class _TodoEntityState extends State<TodoEntity> {
       children: [
         TextField(
           autofocus: true,
-          controller: _titleController,
+          controller: todoTitle,
           decoration: InputDecoration(
             hintText: "새 할 일",
             hintStyle: TextStyle(fontSize: 16, color: Colors.grey),
@@ -57,7 +55,7 @@ class _TodoEntityState extends State<TodoEntity> {
         if (showDescription)
           Expanded(
             child: TextField(
-              controller: _detailController,
+              controller: todoDetail,
               keyboardType: TextInputType.multiline,
               maxLines: null,
               decoration: InputDecoration(hintText: "세부정보 추가"),

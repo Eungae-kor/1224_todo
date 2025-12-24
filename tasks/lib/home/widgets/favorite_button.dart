@@ -12,7 +12,7 @@ class FavoriteButton extends StatelessWidget {
       onPressed: () {
         onChanged(!isFavorite);
       },
-      icon: Icon(isFavorite ? Icons.star_border : Icons.star, size: 24),
+      icon: Icon(isFavorite ? Icons.star : Icons.star_border, size: 24),
     );
   }
 }

@@ -5,7 +5,7 @@ import 'package:todo_app/home/widgets/todo.dart';
 import 'package:todo_app/home/widgets/todo_entity.dart';
 import 'package:todo_app/home/widgets/todo_view.dart';
 
-final String title = "은개's Tasks";
+final String title = "해진's Tasks";
 
 class HomePage extends StatefulWidget {
   @override
